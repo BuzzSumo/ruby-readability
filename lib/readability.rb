@@ -116,15 +116,15 @@ module Readability
           next unless element["src"]
 
           url     = element["src"].value
-          height  = element["height"].nil?  ? 0 : element["height"].value.to_i
-          width   = element["width"].nil?   ? 0 : element["width"].value.to_i
+          height  = element["height"].nil?  ? 150 : element["height"].value.to_i
+          width   = element["width"].nil?   ? 150 : element["width"].value.to_i
 
-          if url =~ /\Ahttps?:\/\//i && (height.zero? || width.zero?)
-            image   = get_image_size(url)
-            next unless image
-          else
+          #if url =~ /\Ahttps?:\/\//i && (height.zero? || width.zero?)
+          #  image   = get_image_size(url)
+          #  next unless image
+          #else
             image = {:width => width, :height => height}
-          end
+          #end
 
           image[:format] = File.extname(url).gsub(".", "")
 
